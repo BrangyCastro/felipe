@@ -1,0 +1,113 @@
+
+
+.content {
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+}
+
+.content .content-button {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px
+}
+
+.btn {
+    border-radius: 16px;
+    padding: 6px 33px;
+    background-color: #3466CC;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.card {
+    all: unset;
+    border-radius: 8px;
+    border: 1px solid #E6EFFD;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+}
+
+.card-title {
+  font-size: 20px;
+  color: #024884;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-bottom: 20px
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+
+.form-group label {
+    font-size: 15px;
+    color: #4B4B4B;
+    font-weight: bold;
+}
+
+.form-control {
+    display: block;
+    height: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+
+  table {
+    border-collapse: collapse;
+  }
+
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #E7EFFD;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    background-color: #E7EFFD;
+    color: #1A4880;
+  }
+  
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }
+
+
+  .accion {
+      display: flex
+  }
+
+  .accion img {
+      width: 20px;
+      margin-right: 8px;
+      cursor: pointer;
+      fill: #1A4880;
+  }
+
+ 
