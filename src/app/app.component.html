@@ -1,13 +1,13 @@
 <div class="content" role="main">
-  <h2>Gestion de Pasajeros</h2>
+  <h2>Gestión de Peajes</h2>
   <p>Aquí podrás añadir, editar o desactivar un peajes para que se muestren o dejen de mostrar en los listados.</p>
 
   <div class='content-button'>
-    <button class='btn' (click)="onClickNuevoPasaje()">Añadir pasaje</button>
+    <button class='btn' (click)="onClickNuevoPasaje()">Añadir peaje</button>
   </div>
 
   <div class='card'>
-    <h2 class='card-title'>Listado de pasajes</h2>
+    <h2 class='card-title'>Listado de Peajes</h2>
     <div class='card-container'>
       <div class='row'>
         <div class='col'>
@@ -24,7 +24,7 @@
         </div>
         <div class='col'>
           <div class='form-group'>
-            <label>Nombre pasaje</label>
+            <label>Nombre peaje</label>
             <input type="text" class='form-control' placeholder='Ingrese nombre pasaje'  />
           </div>
         </div>
@@ -38,23 +38,21 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Nombre Pasaje</th>
-            <th>Departamento</th>
-            <th>Municipio</th>
-            <th>Estado solicitud</th>
-            <th>Categoría vehículo</th>
-            <th>Usuario grupo INVAS</th>
+            <th (click)="onClickSortOrder('nombrePeaje')" [ngClass]="onClassTogglerArrow('nombrePeaje')"> Nombre Pasaje</th>
+            <th (click)="onClickSortOrder('municipio')" [ngClass]="onClassTogglerArrow('municipio')">Municipio</th>
+            <th (click)="onClickSortOrder('estadoSolicitud')" [ngClass]="onClassTogglerArrow('estadoSolicitud')">Estado solicitud</th>
+            <th (click)="onClickSortOrder('categoriaVehiculo')" [ngClass]="onClassTogglerArrow('categoriaVehiculo')">Categoría vehículo</th>
+            <th (click)="onClickSortOrder('usuarioConcesionarioInvias')" [ngClass]="onClassTogglerArrow('usuarioConcesionarioInvias')">Usuario grupo INVAS</th>
             <th>Acción</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let dt of data">
-            <td>{{dt.nombre_pasaje}}</td>
-            <td>{{dt.departamento}}</td>
-            <td>{{dt.municipio}}</td>
-            <td>{{dt.estado_solicitud}}</td>
-            <td>{{dt.categoria}}</td>
-            <td>{{dt.usuario}}</td>
+          <tr *ngFor="let peaje of peajes">
+            <td>{{peaje.nombrePeaje}}</td>
+            <td>{{peaje.municipio}}</td>
+            <td>{{peaje.estadoSolicitud}}</td>
+            <td>{{peaje.categoriaVehiculo}}</td>
+            <td>{{peaje.usuarioConcesionarioInvias}}</td>
             <td>
               <div class='accion'>
                 <img src='../assets/eye-solid.svg' alt='' (click)="onClickVer()" />

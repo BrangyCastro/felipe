@@ -81,11 +81,17 @@
     color: #212529;
   }
   
+.table th img {
+  width: 12px;
+  justify-content: center
+}
+
   .table th,
   .table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #E7EFFD;
+    cursor: pointer;
   }
   
   .table thead th {
@@ -110,4 +116,26 @@
       fill: #1A4880;
   }
 
+
+
+.arrow-down:before,.arrow-up:before{
+ content: ' ';
+ position: relative;
+ right: 8px;
+ border: 6px solid transparent;
+}
+
+.arrow-down:before{
+ top: 10px;
+ border-top-color: #BABABA;
+}
+
+.arrow-up:before{
+ bottom: 15px;
+ border-bottom-color: #BABABA;
+}
+
+.arrow-down,.arrow-up{
+ padding-right: 10px;
+}
  

@@ -1,52 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { orderBy } from 'lodash';
+
+import { AppService } from './app.service';
+import {UIPeaje} from './model/peaje'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'felipe';
+export class AppComponent implements OnInit {
 
-  data = [
-    {
-      id: '1',
-      nombre_pasaje: 'Nombre 1',
-      departamento: 'depa 1',
-      municipio: 'Municipio 1',
-      estado_solicitud: 'activo',
-      categoria: 'n/d',
-      usuario: 'n/d',
-    },
-    {
-      id: '2',
-      nombre_pasaje: 'Nombre 1',
-      departamento: 'depa 1',
-      municipio: 'Municipio 1',
-      estado_solicitud: 'activo',
-      categoria: 'n/d',
-      usuario: 'n/d',
-    },
-    {
-      id: '3',
-      nombre_pasaje: 'Nombre 1',
-      departamento: 'depa 1',
-      municipio: 'Municipio 1',
-      estado_solicitud: 'activo',
-      categoria: 'n/d',
-      usuario: 'n/d',
-    },
-    {
-      id: '4',
-      nombre_pasaje: 'Nombre 1',
-      departamento: 'depa 1',
-      municipio: 'Municipio 1',
-      estado_solicitud: 'activo',
-      categoria: 'n/d',
-      usuario: 'n/d',
-    },
-  ]
+  peajes: UIPeaje[] = []
+  toggler: boolean = true;
+  nameSort: string = '';
 
+  constructor(public appService: AppService) {}
+
+  ngOnInit(): void {
+    this.appService.getPeajes().subscribe((response: any) => {
+        this.peajes = response;
+    });
+
+  }
+  
   onClickNuevoPasaje() {
     console.log('Agregar un nuevo pasaje');
   }
@@ -62,4 +40,22 @@ export class AppComponent {
   onClickEliminar() {
     console.log('Eliminar pasajeros');
   }
+
+  onClickSortOrder(name: string){
+    this.nameSort = name;
+    this.toggler = !this.toggler; 
+    this.peajes = orderBy(this.peajes, name, !this.toggler ? "asc": "desc")
+  }
+
+  onClassTogglerArrow(name: string){
+    if(name === this.nameSort){
+      if(this.toggler){
+        return 'arrow-up'
+      }else{
+        return 'arrow-down'
+      }
+    }
+    return 'arrow-down'
+  }
+
 }
