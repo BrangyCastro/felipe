@@ -13,6 +13,7 @@ import {UIPeaje} from './model/peaje'
 export class AppComponent implements OnInit {
 
   peajes: UIPeaje[] = []
+  filteredData: UIPeaje[] = []
   toggler: boolean = true;
   nameSort: string = '';
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.appService.getPeajes().subscribe((response: any) => {
         this.peajes = response;
+        this.filteredData = this.peajes;
     });
 
   }
@@ -44,7 +46,7 @@ export class AppComponent implements OnInit {
   onClickSortOrder(name: string){
     this.nameSort = name;
     this.toggler = !this.toggler; 
-    this.peajes = orderBy(this.peajes, name, !this.toggler ? "asc": "desc")
+    this.filteredData = orderBy(this.filteredData, name, !this.toggler ? "asc": "desc")
   }
 
   onClassTogglerArrow(name: string){
@@ -57,5 +59,15 @@ export class AppComponent implements OnInit {
     }
     return 'arrow-down'
   }
+
+  searchData(searchValue: any, name: any) {
+    if (searchValue.length >= 2) {
+      this.filteredData = this.peajes.filter((item: any) => {
+        return item[name].toString().toLowerCase().includes(searchValue.toLowerCase());
+      });
+    } else if (searchValue.length < 1) {
+      this.filteredData = this.peajes
+    }
+ }
 
 }

@@ -13,32 +13,32 @@
         <div class='col'>
           <div class='form-group'>
             <label>Departamento</label>
-            <input type="text" class='form-control' placeholder='Ingrese departamento' />
+            <input type="text" class='form-control' placeholder='Ingrese departamento' ngModel (ngModelChange)="searchData($event, 'nombrePeaje')" >
           </div>
         </div>
         <div class='col'>
           <div class='form-group'>
             <label>Municipio</label>
-            <input type="text" class='form-control' placeholder='Ingrese municipio'  />
+            <input type="text" class='form-control' placeholder='Ingrese municipio' ngModel (ngModelChange)="searchData($event, 'municipio')" />
           </div>
         </div>
         <div class='col'>
           <div class='form-group'>
             <label>Nombre peaje</label>
-            <input type="text" class='form-control' placeholder='Ingrese nombre pasaje'  />
+            <input type="text" class='form-control' placeholder='Ingrese nombre pasaje' ngModel (ngModelChange)="searchData($event, 'nombrePeaje')" />
           </div>
         </div>
         <div class='col'>
           <div class='form-group'>
             <label>Estado solicitud</label>
-            <input type="text" class='form-control' placeholder='Ingrese estado solicitud'  />
+            <input type="text" class='form-control' placeholder='Ingrese estado solicitud' ngModel (ngModelChange)="searchData($event, 'estadoSolicitud')" />
           </div>
         </div>
       </div>
       <table class="table">
         <thead>
           <tr>
-            <th (click)="onClickSortOrder('nombrePeaje')" [ngClass]="onClassTogglerArrow('nombrePeaje')"> Nombre Pasaje</th>
+            <th (click)="onClickSortOrder('nombrePeaje')" [ngClass]="onClassTogglerArrow('nombrePeaje')"> Nombre Peaje</th>
             <th (click)="onClickSortOrder('municipio')" [ngClass]="onClassTogglerArrow('municipio')">Municipio</th>
             <th (click)="onClickSortOrder('estadoSolicitud')" [ngClass]="onClassTogglerArrow('estadoSolicitud')">Estado solicitud</th>
             <th (click)="onClickSortOrder('categoriaVehiculo')" [ngClass]="onClassTogglerArrow('categoriaVehiculo')">Categoría vehículo</th>
@@ -47,7 +47,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let peaje of peajes">
+          <tr *ngFor="let peaje of filteredData">
             <td>{{peaje.nombrePeaje}}</td>
             <td>{{peaje.municipio}}</td>
             <td>{{peaje.estadoSolicitud}}</td>
